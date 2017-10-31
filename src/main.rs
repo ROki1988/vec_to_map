@@ -26,8 +26,8 @@ fn main() {
         Hoge {a: "aa".to_owned(), b: 5},
         ];
 
-    let h = xs.iter().fold(HashMap::<&str, Vec<u32>>::new(), |mut acc, x| {
-        acc.entry(x.a.as_ref()).or_insert(Vec::new()).push(x.b);
+    let h = xs.into_iter().fold(HashMap::<String, Vec<u32>>::new(), |mut acc, x| {
+        acc.entry(x.a).or_insert(Vec::new()).push(x.b);
         acc 
     });
 
