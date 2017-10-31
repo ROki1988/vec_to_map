@@ -19,15 +19,15 @@ fn main() {
     });
 
     let xs = vec![
-        Hoge {a: "a".to_owned(), b: 0},
-        Hoge {a: "aaa".to_owned(), b: 0},
-        Hoge {a: "a".to_owned(), b: 0},
-        Hoge {a: "aaa".to_owned(), b: 0},
-        Hoge {a: "aa".to_owned(), b: 0},
+        Hoge {a: "a".to_owned(), b: 1},
+        Hoge {a: "aaa".to_owned(), b: 2},
+        Hoge {a: "a".to_owned(), b: 3},
+        Hoge {a: "aaa".to_owned(), b: 4},
+        Hoge {a: "aa".to_owned(), b: 5},
         ];
 
-    let h = xs.iter().fold(HashMap::<String, Vec<u32>>::new(), |mut acc, x| {
-        acc.entry(x.a.clone()).or_insert(Vec::new()).push(x.b);
+    let h = xs.iter().fold(HashMap::<&str, Vec<u32>>::new(), |mut acc, x| {
+        acc.entry(x.a.as_ref()).or_insert(Vec::new()).push(x.b);
         acc 
     });
 
